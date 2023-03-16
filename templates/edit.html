@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% load static %} {% block content %} 
+
+<section class="content">
+  
+  <div class="header"  >
+  <img src="{% static 'img/twitter.png' %}" style="width:60px" />
+ <h3>Home</h3>
+</div>
+  <section class="post_form">
+    <form method="POST" enctype="multipart/form-data" class="forms">
+        
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Name" value="{{post.name}}" required />
+        <textarea id = "textarea" name="body" placeholder="Tell us anything" required>{{post.body}}</textarea>
+        <img class="post-img" src="{{post.image.url}}" alt="">
+        <div class="textarea-btn">
+
+        <input class="upload" type="file" name="image"/>  
+        <input type="submit" value="Update" />
+        <a href="/">
+        <input type="button" value="Cancel" />
+      </a>
+
+        </div>
+        
+
+  </section>
+</section>
+
+{% endblock %}
